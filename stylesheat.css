@@ -3,6 +3,8 @@ body{
 
 }
 main{
+    display: grid;
+    height: 100vh;
     grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     grid-template-areas:
