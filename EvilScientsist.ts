@@ -30,7 +30,7 @@ const EvilScientsitData = {
 
     ],
     displayCurrentScinetists: function(each: any){
-        each.forEach(Scientstinfo => {
+        each.forEach((Scientstinfo: any) => {
 
             const Scientsitcard: any = document.querySelector('.Evil-scientist-database')
 
@@ -38,18 +38,22 @@ const EvilScientsitData = {
             CardForScinetist.className = 'Scientist';
 
             Scientsitcard.append(CardForScinetist)
+            
+            const link = document.createElement('a')
+            link.className = 'a-btn';
+            CardForScinetist.append(link)
 
             const h3name = document.createElement('h3')
             h3name.textContent = Scientstinfo.Name;
-            CardForScinetist.append(h3name)
+            link.append(h3name)
 
             const ScientistAge = document.createElement('h3')
             ScientistAge.textContent = Scientstinfo.Age;
-            CardForScinetist.append(ScientistAge)
+            link.append(ScientistAge)
 
             const HenchmenNumber = document.createElement('h3')
             HenchmenNumber.textContent = Scientstinfo.Henchmen;
-            CardForScinetist.append(HenchmenNumber)
+            link.append(HenchmenNumber)
 
         });
     },
@@ -57,11 +61,11 @@ const EvilScientsitData = {
         document.querySelectorAll('.Scientist').forEach(section => section.remove())
     },
     addScientist: function () {
-        const NameScientist: any = document.querySelector('#NamnEvilScientist')
+        const NameScientist: any = document.querySelectorAll('#ScientistName')
         
-        const AgeScientist: any = document.querySelector('#NamnEvilScientist')
+        const AgeScientist: any = document.querySelectorAll('#ScientistAge')
         
-        const ScientistsHenchmen: any = document.querySelector('#NamnEvilScientist')
+        const ScientistsHenchmen: any = document.querySelectorAll('#ScientistHenchmen')
         
         const newSCientist = {
             Name: NameScientist.value,
@@ -69,13 +73,22 @@ const EvilScientsitData = {
             Henchmen: ScientistsHenchmen.value,
         }
         EvilScientsitData.Scinetsts.push(newSCientist)
-
+        
         NameScientist.value = "";
         AgeScientist.value = "";
         ScientistsHenchmen.value = "";
-
+        
+        
         EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts)
     },
+    showScientistInfo: function(){
+        const allA = Array.from(document.getElementsByClassName('.a'))
+        allA.forEach(a => {
+            a.addEventListener('click', () =>{
+                console.log("clicked")
+            })
+        })
+    }
 
 } 
 
@@ -85,6 +98,7 @@ const EvilScientsitData = {
 //});
 
 document.querySelector('.Add-sientics')?.addEventListener('click', function(){
+    EvilScientsitData.clearScientist()
     EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts)
 });
 
