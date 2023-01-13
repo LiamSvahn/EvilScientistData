@@ -82,12 +82,13 @@ const EvilScientsitData = {
         EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts)
     },
     showScientistInfo: function(){
-        const allA = Array.from(document.getElementsByClassName('.a'))
-        allA.forEach(a => {
-            a.addEventListener('click', () =>{
-                console.log("clicked")
-            })
-        })
+        let btns = document.querySelectorAll('a');
+
+        btns.forEach(function (i) {
+        i.addEventListener('click', function() {
+            console.log("clicked")
+            });
+        });
     }
 
 } 
@@ -102,5 +103,5 @@ document.querySelector('.Add-sientics')?.addEventListener('click', function(){
     EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts)
 });
 
-EvilScientsitData.showScientistInfo();
+EvilScientsitData.showScientistInfo()
 EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts)
