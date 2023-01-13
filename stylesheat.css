@@ -40,6 +40,9 @@ article{
     height: 200px;
     display: inline-grid;
 }
-section .Evil-scientist-database{
+a{
+    display: inherit;
+}
+section.Evil-scientist-database{
     display: block;
 }

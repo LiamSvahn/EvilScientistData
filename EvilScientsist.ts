@@ -102,5 +102,5 @@ document.querySelector('.Add-sientics')?.addEventListener('click', function(){
     EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts)
 });
 
-
+EvilScientsitData.showScientistInfo();
 EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts)

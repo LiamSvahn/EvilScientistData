@@ -30,29 +30,32 @@ const EvilScientsitData = {
         },
     ],
     displayCurrentScinetists: function (each) {
-        each.forEach(Scientstinfo => {
+        each.forEach((Scientstinfo) => {
             const Scientsitcard = document.querySelector('.Evil-scientist-database');
             const CardForScinetist = document.createElement('section');
             CardForScinetist.className = 'Scientist';
             Scientsitcard.append(CardForScinetist);
+            const link = document.createElement('a');
+            link.className = 'a-btn';
+            CardForScinetist.append(link);
             const h3name = document.createElement('h3');
             h3name.textContent = Scientstinfo.Name;
-            CardForScinetist.append(h3name);
+            link.append(h3name);
             const ScientistAge = document.createElement('h3');
             ScientistAge.textContent = Scientstinfo.Age;
-            CardForScinetist.append(ScientistAge);
+            link.append(ScientistAge);
             const HenchmenNumber = document.createElement('h3');
             HenchmenNumber.textContent = Scientstinfo.Henchmen;
-            CardForScinetist.append(HenchmenNumber);
+            link.append(HenchmenNumber);
         });
     },
     clearScientist: function () {
         document.querySelectorAll('.Scientist').forEach(section => section.remove());
     },
     addScientist: function () {
-        const NameScientist = document.querySelector('#NamnEvilScientist');
-        const AgeScientist = document.querySelector('#NamnEvilScientist');
-        const ScientistsHenchmen = document.querySelector('#NamnEvilScientist');
+        const NameScientist = document.querySelectorAll('#ScientistName');
+        const AgeScientist = document.querySelectorAll('#ScientistAge');
+        const ScientistsHenchmen = document.querySelectorAll('#ScientistHenchmen');
         const newSCientist = {
             Name: NameScientist.value,
             Age: AgeScientist.value,
@@ -64,12 +67,22 @@ const EvilScientsitData = {
         ScientistsHenchmen.value = "";
         EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts);
     },
+    showScientistInfo: function () {
+        const allA = Array.from(document.getElementsByClassName('.a'));
+        allA.forEach(a => {
+            a.addEventListener('click', () => {
+                console.log("clicked");
+            });
+        });
+    }
 };
 //document.querySelector('.resetFilter-btn').addEventListener('click', function () {
 //    monsterDatabase.clearMonsters();
 //    monsterDatabase.loadMonsters(monsterDatabase.monsters);
 //});
 (_a = document.querySelector('.Add-sientics')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
+    EvilScientsitData.clearScientist();
     EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts);
 });
+EvilScientsitData.showScientistInfo();
 EvilScientsitData.displayCurrentScinetists(EvilScientsitData.Scinetsts);
